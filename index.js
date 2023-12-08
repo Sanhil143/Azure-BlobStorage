@@ -4,8 +4,9 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser')
 const session = require('express-session');
 const path = require('path');
-const azureRoute = require('./src/server/router');
 require('dotenv').config();
+const azureRoute = require('./src/server/router');
+const azureClientRoute = require('./src/client/router')
 const app = express();
 
 app.use(session({
@@ -28,6 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use('/azure',azureRoute);
+app.use('/azureClient',azureClientRoute);
 
 app.listen(3000, () => {
   console.log("Express app running on console");

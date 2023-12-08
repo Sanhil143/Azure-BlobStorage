@@ -12,7 +12,7 @@
   <script>
     async function fetchBlobAndDisplay() {
       try {
-        const response = await fetch('http://localhost:3000/blobs/api/getBlob'); // Adjust the URL to your server endpoint
+        const response = await fetch('http://localhost:3000/azureClient/api/getBlob'); // Adjust the URL to your server endpoint
         const { blobContent } = await response.json();
 
         const imgElement = document.getElementById('blobImage');
