@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser')
 const session = require('express-session');
 const path = require('path');
-const azureRoute = require('./src/router');
+const azureRoute = require('./src/server/router');
 require('dotenv').config();
 const app = express();
 

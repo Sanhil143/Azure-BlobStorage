@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Display Blob in Browser</title>
+</head>
+<body>
+  <h1>Video from Blob Storage</h1>
+  <video id="blobVideo" controls width="640" height="360">
+  </video>
+  <script>
+    async function fetchBlobAndDisplay() {
+      try {
+        const response = await fetch('http://localhost:3000/blobs/api/getBlob'); // Adjust the URL to your server endpoint
+        const { blobContent } = await response.json();
+
+        const videoElement = document.getElementById('blobVideo');
+        videoElement.src = 'data:video/mp4;base64,' + blobContent;
+        videoElement.load();
+      } catch (error) {
+        console.error('Error fetching and displaying blob:', error);
+      }
+    }
+
+    // Call the function to fetch and display the blob
+    fetchBlobAndDisplay();
+  </script>
+</body>
+</html>

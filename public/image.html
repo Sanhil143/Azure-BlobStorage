@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Display Blob in Browser</title>
+</head>
+<body>
+  <h1>Image from Blob Storage</h1>
+  <img id="blobImage" alt="Blob Image">
+
+  <script>
+    async function fetchBlobAndDisplay() {
+      try {
+        const response = await fetch('http://localhost:3000/blobs/api/getBlob'); // Adjust the URL to your server endpoint
+        const { blobContent } = await response.json();
+
+        const imgElement = document.getElementById('blobImage');
+        imgElement.src = 'data:' + response.headers.get('content-type') + ';base64,' + blobContent;
+      } catch (error) {
+        console.error('Error fetching and displaying blob:', error);
+      }
+    }
+
+    // Call the function to fetch and display the blob
+    fetchBlobAndDisplay();
+  </script>
+</body>
+</html>
