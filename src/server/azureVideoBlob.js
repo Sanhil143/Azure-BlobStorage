@@ -1,7 +1,7 @@
-import {BlobServiceClient,StorageSharedKeyCredential} from "@azure/storage-blob";
-import fs from 'fs';
+const { BlobServiceClient, StorageSharedKeyCredential } = require("@azure/storage-blob");
+const fs = require('fs');
 
-export const videoFileUpload = async(video,fileNamePrefix) => {
+ const videoFileUpload = async(video,fileNamePrefix) => {
       const sharedKeyCredential = new StorageSharedKeyCredential(
         process.env.AZURE_ACCOUNT_NAME,
         process.env.AZURE_ACCOUNT_KEY
@@ -34,3 +34,5 @@ export const videoFileUpload = async(video,fileNamePrefix) => {
         throw error;
       }
     }
+
+    module.exports = {videoFileUpload}

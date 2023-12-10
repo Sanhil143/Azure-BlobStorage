@@ -1,5 +1,5 @@
 const router = require('express')();
-const downloadBlob = require('./azureClient')
+const {downloadBlob} = require('./azureClient')
 
 router.get('/api/getBlob', async (req, res) => {
       try {

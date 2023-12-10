@@ -9,7 +9,7 @@ const connStr = process.env.AZURE_CONN_STRING;
 
 const blobServiceClient = BlobServiceClient.fromConnectionString(connStr);
 
-export default async function downloadBlob() {
+async function downloadBlob() {
   const containerClient = blobServiceClient.getContainerClient(containerName);
   const blobClient = containerClient.getBlobClient(blobName);
 
@@ -36,3 +36,5 @@ async function streamToBuffer(readableStream) {
     readableStream.on('error', reject);
   });
 }
+
+module.exports = {downloadBlob}
